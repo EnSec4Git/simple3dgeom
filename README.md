@@ -25,10 +25,10 @@ There is support for specifying 'precision' through a template argument. This is
 
 There are two classes included for comparators - TrivialNumberComparator (which does the default type comparison)
 and DefaultNumberComparator, which takes an integer template parameter for the exponent of the precision
-(that is to which exponent one must take 10, so that it is "equal" to zero).
-***Note***
-The DefaultNumberComparator is suboptimal in performance, as it relies on the pow() function to perform comparisons.
-This is due to limitations in C++ templates, which disallows floating-point arithmetics.
+(that is to which exponent one must take 10, so that it is "equal" to zero).   
+***Note***   
+The DefaultNumberComparator is suboptimal in performance, as it relies on the pow() function to perform comparisons.   
+This is due to limitations in C++ templates that disallow floating-point arithmetics at compile-time.   
 If possible, use your own implementation for fixed values of the exponent.
 
 Template arguments
@@ -41,7 +41,7 @@ Scope
 ------------
 The library is very small in scope and only implements the linear space structure of the 3D space and 3D rotations.
 
-***Note***
+***Note***   
 That this library was written awhile back and I haven't really used it since.
 
 Contributing
