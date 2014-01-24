@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
-#include <cmath>
+#include <math.h>
 
 namespace simple3dgeom
 {
@@ -147,9 +147,7 @@ namespace simple3dgeom
 		fp_type absDist(const Point3D<fp_type,comparator> &pt) const;
 	};
 
-	template <typename fp_type, typename comparator>
-	Point3D<fp_type,comparator> normalize(const Point3D<fp_type,comparator> &a);
-
+// simple3dgeom.tpp includes the definitions of all the template classes/functions/methods
 #include "simple3dgeom.tpp"
 };
 

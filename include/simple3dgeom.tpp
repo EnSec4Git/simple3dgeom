@@ -9,9 +9,9 @@ template <typename fp_type> inline fp_type sqr(fp_type x) {
 template <typename fp_type, int epsilon_exp> bool
 DefaultNumberComparator<fp_type, epsilon_exp>::compare(fp_type first, fp_type second) {
 	if(epsilon_exp > 0 || epsilon_exp  <= -power_count) {
-		return abs(first - second) < pow(10.0, epsilon_exp);
+		return fabs(first - second) < pow(10.0, epsilon_exp);
 	}
-	return abs(first - second) < powers[-epsilon_exp];
+	return fabs(first - second) < powers[-epsilon_exp];
 }
 
 template <typename fp_type, int epsilon_exp> int
