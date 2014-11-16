@@ -68,6 +68,9 @@ namespace simple3dgeom
 		fp_type X() const;
 		fp_type Y() const;
 		fp_type Z() const;
+		fp_type radius() const;
+		fp_type azimuth() const;
+		fp_type inclination() const;
 		bool operator== (const Point3D<fp_type, comparator>& pt) const;
 		bool operator!= (const Point3D<fp_type,comparator>& pt) const;
 		fp_type operator* (const Point3D<fp_type,comparator>& pt) const;
@@ -100,6 +103,7 @@ namespace simple3dgeom
 		void setX(fp_type x) { this->x = x; }
 		void setY(fp_type y) { this->y = y; }
 		void setZ(fp_type z) { this->z = z; }
+		void setSpherical(fp_type radius, fp_type azimuth, fp_type inclination);
 		void normalize();
 		void input(std::istream& f = std::cin);
 		void inputs(std::istream& f = std::cin);

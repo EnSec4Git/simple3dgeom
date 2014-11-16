@@ -43,6 +43,21 @@ fp_type Point3D<fp_type, comparator>::Z() const {
 }
 
 template <typename fp_type, typename comparator>
+fp_type Point3D<fp_type, comparator>::radius() const {
+    return this->length();
+}
+
+template <typename fp_type, typename comparator>
+fp_type Point3D<fp_type, comparator>::azimuth() const {
+    return atan2(this->y, this->x);
+}
+
+template <typename fp_type, typename comparator>
+fp_type Point3D<fp_type, comparator>::inclination() const {
+    return acos(this->z/this->radius());
+}
+
+template <typename fp_type, typename comparator>
 Point3D<fp_type, comparator> Point3D<fp_type, comparator>::operator+(const Point3D<fp_type, comparator>& pt) const {
 	return Point3D<fp_type, comparator>(x+pt.x, y+pt.y, z+pt.z);
 }
@@ -126,9 +141,14 @@ template <typename fp_type, typename comparator>
 void MutablePoint3D<fp_type, comparator>::inputs(std::istream& f) {
 	fp_type R,phi,theta;
 	f>>R>>phi>>theta;
-	this->x = R*sin(theta)*cos(phi);
-	this->y = R*sin(theta)*sin(phi);
-	this->z = R*cos(theta);
+	this->setSpherical(R, phi, theta);
+}
+
+template <typename fp_type, typename comparator>
+void MutablePoint3D<fp_type, comparator>::setSpherical(fp_type radius, fp_type azimuth, fp_type inclination) {
+	this->x = radius*sin(inclination)*cos(azimuth);
+	this->y = radius*sin(inclination)*sin(azimuth);
+	this->z = radius*cos(inclination);
 }
 
 template <typename fp_type, class comparator>
